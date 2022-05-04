@@ -6,6 +6,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "Launch CardStackApp",
+            "request": "launch",
+            "mainClass": "com.personal.apps.CardStackApp",
+            "projectName": "java-data-structures"
+        },
+        {
+            "type": "java",
             "name": "Launch Current File",
             "request": "launch",
             "mainClass": "${file}"

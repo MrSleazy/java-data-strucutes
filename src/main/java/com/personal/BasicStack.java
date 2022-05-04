@@ -15,7 +15,7 @@ public class BasicStack<T> {
     }
 
     public T pop() {
-        if(stackIndex == 0) {
+        if (stackIndex == 0) {
             System.out.println("Cannot pop from empty Stack");
             return null;
         }
@@ -24,32 +24,34 @@ public class BasicStack<T> {
     }
 
     public boolean contains(T searchedItem) {
-        for(int i = stackIndex; i> 0 ; i--) {
-            if(items[i].equals(searchedItem)) {
+        for (int i = stackIndex; i > 0; i--) {
+            if (items[i].equals(searchedItem)) {
                 return true;
             }
-        } 
+        }
 
         return false;
     }
 
     public T access(T searchedItem) {
-        for (int i = 0; i < stackIndex ; i++) {
-            T currentItem = items[i];
-            if(currentItem.equals(searchedItem)) {
-                // found item
-                return currentItem;
+        while (stackIndex > 0) {
+            T item = pop();
+            if (item.equals(searchedItem)) {
+                return item;
             }
         }
         return null;
     }
 
+    public int size() {
+        return stackIndex;
+    }
+
     @Override
     public String toString() {
         return "{" +
-            " items='" + items + "'" +
-            ", stackIndex='" + stackIndex + "'" +
-            "}";
+                " items='" + items + "'" +
+                ", stackIndex='" + stackIndex + "'" +
+                "}";
     }
-    
 }
