@@ -3,26 +3,35 @@ package com.personal.stack;
 import java.util.LinkedList;
 import java.util.List;
 
-public class LinkedLinkStack<T> implements IStack<T> {
+public class LinkedListStack<T> implements IStack<T> {
 
-    private List<T> items;
+    private Node top = null;
     private int stackIndex = 0;
 
-    public LinkedLinkStack() {
-        items = new LinkedList<>();
+    private class Node<T> {
+        private T item = null;
+        private Node<T> previous = null;
     }
 
     @Override
     public void push(T item) {
-        items.add(item);
+        Node<T> temp = new Node<T>();
+        temp.item = item;
+        temp.previous = top;
+        top = temp;
         stackIndex++;
     }
 
     @Override
     public T pop() {
-        if (items.isEmpty())
+        if(top == null) {
+            System.out.println("Tried to pop from empty stack!");
             return null;
-        return items.remove(stackIndex-- -1);
+        }
+        T item = top.item;
+        top = top.previous;
+        stackIndex--;
+        return item;
     }
 
     @Override
@@ -32,7 +41,7 @@ public class LinkedLinkStack<T> implements IStack<T> {
 
     @Override
     public T access(T item) {
-        while(!items.isEmpty()) {
+        while (!items.isEmpty()) {
             T top = pop();
             if (top.equals(item)) {
                 return top;
