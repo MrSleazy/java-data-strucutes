@@ -1,9 +1,12 @@
 package com.personal.apps;
 
-import com.personal.BasicStack;
+import com.personal.stack.ArrayListStack;
+import com.personal.stack.BasicStack;
+import com.personal.stack.IStack;
+import com.personal.stack.LinkedLinkStack;
 
 public class CardStackApp {
-	BasicStack<String> stack = new BasicStack<String>();
+	IStack<String> stack = new LinkedLinkStack<String>();
 
 	public static void main(String[] args) {
 		CardStackApp app = new CardStackApp();

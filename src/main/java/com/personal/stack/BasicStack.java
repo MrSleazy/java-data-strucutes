@@ -1,6 +1,6 @@
-package com.personal;
+package com.personal.stack;
 
-public class BasicStack<T> {
+public class BasicStack<T> implements IStack<T> {
 
     private T[] items;
     private int stackIndex;
@@ -16,7 +16,7 @@ public class BasicStack<T> {
 
     public T pop() {
         if (stackIndex == 0) {
-            System.out.println("Cannot pop from empty Stack");
+            System.out.println("Attempted pop call from empty Stack");
             return null;
         }
 
@@ -53,5 +53,13 @@ public class BasicStack<T> {
                 " items='" + items + "'" +
                 ", stackIndex='" + stackIndex + "'" +
                 "}";
+    }
+
+    @Override
+    public T peek() {
+        if (stackIndex < 1) {
+            return null;
+        }
+        return items[stackIndex];
     }
 }

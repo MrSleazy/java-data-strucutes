@@ -1,31 +1,35 @@
-package com.personal;
+package com.personal.stack;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+import com.personal.stack.BasicStack;
+
 import org.junit.jupiter.api.Test;
 
-public class BasicStackTest {
+public class ArrayListStackTest {
 
 
     @Test
     void testPushAndPop() {
 
-        BasicStack<String> stack = new BasicStack<String>();
+        IStack<String> stack = new ArrayListStack<String>();
         stack.push("myString1");
         stack.push("myString2");
 
+        assertThat(stack.peek()).isEqualTo("myString2");
         assertThat(stack.size()).isEqualTo(2);
 
         assertThat(stack.pop()).isEqualTo("myString2");
         assertThat(stack.pop()).isEqualTo("myString1");
         assertThat(stack.pop()).isNull();
+        assertThat(stack.peek()).isNull();
         
         assertThat(stack.size()).isEqualTo(0);
     }
 
     @Test
     void testContains() {
-        BasicStack<Integer> stack = new BasicStack<Integer>();
+        IStack<Integer> stack = new ArrayListStack<Integer>();
         stack.push(1);
         stack.push(1);
         stack.push(2);
@@ -40,7 +44,7 @@ public class BasicStackTest {
 
     @Test
     void testAccess() {
-        BasicStack<Integer> stack = new BasicStack<Integer>();
+        IStack<Integer> stack = new ArrayListStack<Integer>();
         stack.push(1);
         stack.push(1);
         stack.push(2);
